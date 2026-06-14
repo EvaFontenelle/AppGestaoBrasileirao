@@ -1,0 +1,17 @@
+C:\Users\Pichau\OneDrive\Documentos\GestaoBrasileirao_front\GestaoBrasileirao\bin\Debug\net10.0-windows\GestaoBrasileirao.exe
+C:\Users\Pichau\OneDrive\Documentos\GestaoBrasileirao_front\GestaoBrasileirao\bin\Debug\net10.0-windows\GestaoBrasileirao.deps.json
+C:\Users\Pichau\OneDrive\Documentos\GestaoBrasileirao_front\GestaoBrasileirao\bin\Debug\net10.0-windows\GestaoBrasileirao.runtimeconfig.json
+C:\Users\Pichau\OneDrive\Documentos\GestaoBrasileirao_front\GestaoBrasileirao\bin\Debug\net10.0-windows\GestaoBrasileirao.dll
+C:\Users\Pichau\OneDrive\Documentos\GestaoBrasileirao_front\GestaoBrasileirao\bin\Debug\net10.0-windows\GestaoBrasileirao.pdb
+C:\Users\Pichau\OneDrive\Documentos\GestaoBrasileirao_front\GestaoBrasileirao\obj\Debug\net10.0-windows\GestaoBrasileirao.frmLogin.resources
+C:\Users\Pichau\OneDrive\Documentos\GestaoBrasileirao_front\GestaoBrasileirao\obj\Debug\net10.0-windows\GestaoBrasileirao.Properties.Resources.resources
+C:\Users\Pichau\OneDrive\Documentos\GestaoBrasileirao_front\GestaoBrasileirao\obj\Debug\net10.0-windows\GestaoBrasileirao.csproj.GenerateResource.cache
+C:\Users\Pichau\OneDrive\Documentos\GestaoBrasileirao_front\GestaoBrasileirao\obj\Debug\net10.0-windows\GestaoBrasileirao.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Pichau\OneDrive\Documentos\GestaoBrasileirao_front\GestaoBrasileirao\obj\Debug\net10.0-windows\GestaoBrasileirao.AssemblyInfoInputs.cache
+C:\Users\Pichau\OneDrive\Documentos\GestaoBrasileirao_front\GestaoBrasileirao\obj\Debug\net10.0-windows\GestaoBrasileirao.AssemblyInfo.cs
+C:\Users\Pichau\OneDrive\Documentos\GestaoBrasileirao_front\GestaoBrasileirao\obj\Debug\net10.0-windows\GestaoBrasileirao.csproj.CoreCompileInputs.cache
+C:\Users\Pichau\OneDrive\Documentos\GestaoBrasileirao_front\GestaoBrasileirao\obj\Debug\net10.0-windows\GestaoBrasileirao.dll
+C:\Users\Pichau\OneDrive\Documentos\GestaoBrasileirao_front\GestaoBrasileirao\obj\Debug\net10.0-windows\refint\GestaoBrasileirao.dll
+C:\Users\Pichau\OneDrive\Documentos\GestaoBrasileirao_front\GestaoBrasileirao\obj\Debug\net10.0-windows\GestaoBrasileirao.pdb
+C:\Users\Pichau\OneDrive\Documentos\GestaoBrasileirao_front\GestaoBrasileirao\obj\Debug\net10.0-windows\GestaoBrasileirao.genruntimeconfig.cache
+C:\Users\Pichau\OneDrive\Documentos\GestaoBrasileirao_front\GestaoBrasileirao\obj\Debug\net10.0-windows\ref\GestaoBrasileirao.dll

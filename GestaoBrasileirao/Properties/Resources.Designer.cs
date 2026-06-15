@@ -63,6 +63,16 @@ namespace GestaoBrasileirao.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bandeiraBrasil {
+            get {
+                object obj = ResourceManager.GetObject("bandeiraBrasil", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap brasileira2026 {
             get {
                 object obj = ResourceManager.GetObject("brasileira2026", resourceCulture);
@@ -76,6 +86,26 @@ namespace GestaoBrasileirao.Properties {
         internal static System.Drawing.Bitmap Brasileirao2026 {
             get {
                 object obj = ResourceManager.GetObject("Brasileirao2026", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap escudoCBF {
+            get {
+                object obj = ResourceManager.GetObject("escudoCBF", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap jogador {
+            get {
+                object obj = ResourceManager.GetObject("jogador", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

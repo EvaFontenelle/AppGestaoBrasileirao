@@ -7,5 +7,11 @@
     <Compile Update="frmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="frmTelaAtualizar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmTelaConsultar.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

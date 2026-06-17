@@ -95,10 +95,10 @@
             // 
             imgBrasileirao2026.BackColor = Color.Transparent;
             imgBrasileirao2026.Image = (Image)resources.GetObject("imgBrasileirao2026.Image");
-            imgBrasileirao2026.Location = new Point(47, 60);
+            imgBrasileirao2026.Location = new Point(31, 17);
             imgBrasileirao2026.Name = "imgBrasileirao2026";
-            imgBrasileirao2026.Size = new Size(361, 351);
-            imgBrasileirao2026.SizeMode = PictureBoxSizeMode.Zoom;
+            imgBrasileirao2026.Size = new Size(414, 404);
+            imgBrasileirao2026.SizeMode = PictureBoxSizeMode.AutoSize;
             imgBrasileirao2026.TabIndex = 0;
             imgBrasileirao2026.TabStop = false;
             // 

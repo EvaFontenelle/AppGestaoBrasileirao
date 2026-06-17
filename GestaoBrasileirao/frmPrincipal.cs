@@ -14,5 +14,21 @@ namespace GestaoBrasileirao
         {
             InitializeComponent();
         }
+
+        private void btnConsultar_Click(object sender, EventArgs e)
+        {
+            frmTelaConsultar consultar = new frmTelaConsultar();
+            this.Hide();
+            consultar.ShowDialog();
+            this.Close();
+        }
+
+        private void btnAtualizar_Click(object sender, EventArgs e)
+        {
+            frmTelaAtualizar atualizar = new frmTelaAtualizar();
+            this.Hide();
+            atualizar.ShowDialog();
+            this.Close();
+        }
     }
 }

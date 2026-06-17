@@ -60,6 +60,7 @@
             btnAtualizar.TabIndex = 1;
             btnAtualizar.Text = "Atualizar";
             btnAtualizar.UseVisualStyleBackColor = false;
+            btnAtualizar.Click += btnAtualizar_Click;
             // 
             // btnConsultar
             // 
@@ -73,6 +74,7 @@
             btnConsultar.TabIndex = 0;
             btnConsultar.Text = "Consultar";
             btnConsultar.UseVisualStyleBackColor = false;
+            btnConsultar.Click += btnConsultar_Click;
             // 
             // imgTelaPrincipal
             // 

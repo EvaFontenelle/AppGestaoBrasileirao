@@ -52,6 +52,7 @@
             btnSair.Text = "Sair";
             btnSair.TextAlign = ContentAlignment.MiddleRight;
             btnSair.UseVisualStyleBackColor = false;
+            btnSair.Click += btnSair_Click;
             // 
             // btnEntrar
             // 
@@ -67,6 +68,7 @@
             btnEntrar.Text = "Entrar";
             btnEntrar.TextAlign = ContentAlignment.MiddleRight;
             btnEntrar.UseVisualStyleBackColor = false;
+            btnEntrar.Click += btnEntrar_Click;
             // 
             // txtTitulo
             // 

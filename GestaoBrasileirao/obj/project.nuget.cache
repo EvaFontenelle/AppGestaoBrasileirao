@@ -1,13 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+N/QckqrEns=",
+  "dgSpecHash": "J+w2VZ+dB8c=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Pichau\\Documents\\GitHub\\AppGestaoBrasileirao\\GestaoBrasileirao\\GestaoBrasileirao.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\Pichau\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\9.0.17\\microsoft.windowsdesktop.app.ref.9.0.17.nupkg.sha512",
-    "C:\\Users\\Pichau\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.17\\microsoft.netcore.app.ref.9.0.17.nupkg.sha512",
-    "C:\\Users\\Pichau\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\9.0.17\\microsoft.aspnetcore.app.ref.9.0.17.nupkg.sha512",
-    "C:\\Users\\Pichau\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\9.0.17\\microsoft.netcore.app.host.win-x64.9.0.17.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\1089776\\Documents\\GitHub\\AppGestaoBrasileirao\\GestaoBrasileirao\\GestaoBrasileirao.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

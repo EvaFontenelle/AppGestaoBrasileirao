@@ -120,6 +120,7 @@
             Controls.Add(panelPrincipal);
             Name = "frmPrincipal";
             Text = "frmPrincipal";
+            FormClosed += frmPrincipal_FormClosed;
             panelPrincipal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)imgTelaPrincipal).EndInit();
             ResumeLayout(false);

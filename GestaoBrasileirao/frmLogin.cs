@@ -9,10 +9,10 @@ namespace GestaoBrasileirao
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
+            this.Visible = false;
             frmPrincipal principal = new frmPrincipal();
-            this.Hide();
             principal.ShowDialog();
-            this.Close();
+            
         }
 
         private void btnSair_Click(object sender, EventArgs e)

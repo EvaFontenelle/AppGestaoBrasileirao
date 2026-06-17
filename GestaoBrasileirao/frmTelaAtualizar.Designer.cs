@@ -32,10 +32,10 @@
             btnApagar = new Button();
             btnAtualizar = new Button();
             btnInserir = new Button();
-            inpSerie = new TextBox();
             txtSerie = new Label();
             txtTitulo = new Label();
             imgFundo = new PictureBox();
+            comboBoxAtualizar = new ComboBox();
             panelAtualizar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)imgFundo).BeginInit();
             SuspendLayout();
@@ -43,10 +43,10 @@
             // panelAtualizar
             // 
             panelAtualizar.BackColor = Color.DarkBlue;
+            panelAtualizar.Controls.Add(comboBoxAtualizar);
             panelAtualizar.Controls.Add(btnApagar);
             panelAtualizar.Controls.Add(btnAtualizar);
             panelAtualizar.Controls.Add(btnInserir);
-            panelAtualizar.Controls.Add(inpSerie);
             panelAtualizar.Controls.Add(txtSerie);
             panelAtualizar.Controls.Add(txtTitulo);
             panelAtualizar.Location = new Point(-2, 0);
@@ -69,7 +69,7 @@
             // 
             // btnAtualizar
             // 
-            btnAtualizar.BackColor = Color.LightSeaGreen;
+            btnAtualizar.BackColor = Color.Turquoise;
             btnAtualizar.FlatStyle = FlatStyle.Flat;
             btnAtualizar.Font = new Font("Arial", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAtualizar.ForeColor = Color.DarkBlue;
@@ -92,15 +92,6 @@
             btnInserir.TabIndex = 5;
             btnInserir.Text = "Inserir";
             btnInserir.UseVisualStyleBackColor = false;
-            // 
-            // inpSerie
-            // 
-            inpSerie.BorderStyle = BorderStyle.FixedSingle;
-            inpSerie.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            inpSerie.Location = new Point(24, 146);
-            inpSerie.Name = "inpSerie";
-            inpSerie.Size = new Size(151, 33);
-            inpSerie.TabIndex = 4;
             // 
             // txtSerie
             // 
@@ -134,6 +125,15 @@
             imgFundo.TabIndex = 3;
             imgFundo.TabStop = false;
             // 
+            // comboBoxAtualizar
+            // 
+            comboBoxAtualizar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            comboBoxAtualizar.FormattingEnabled = true;
+            comboBoxAtualizar.Location = new Point(24, 146);
+            comboBoxAtualizar.Name = "comboBoxAtualizar";
+            comboBoxAtualizar.Size = new Size(151, 33);
+            comboBoxAtualizar.TabIndex = 7;
+            // 
             // frmTelaAtualizar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -154,11 +154,11 @@
 
         private Panel panelAtualizar;
         private Button btnInserir;
-        private TextBox inpSerie;
         private Label txtSerie;
         private Label txtTitulo;
         private Button btnApagar;
         private Button btnAtualizar;
         private PictureBox imgFundo;
+        private ComboBox comboBoxAtualizar;
     }
 }

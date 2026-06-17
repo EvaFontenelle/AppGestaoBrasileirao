@@ -30,11 +30,11 @@
         {
             panelConsultar = new Panel();
             btnConsultar = new Button();
-            inpSerie = new TextBox();
             txtSerie = new Label();
             txtTitulo = new Label();
             imgTelaConsultar = new PictureBox();
             TelaConsulta = new DataGridView();
+            comboBoxConsultar = new ComboBox();
             panelConsultar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)imgTelaConsultar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)TelaConsulta).BeginInit();
@@ -43,8 +43,8 @@
             // panelConsultar
             // 
             panelConsultar.BackColor = Color.DarkBlue;
+            panelConsultar.Controls.Add(comboBoxConsultar);
             panelConsultar.Controls.Add(btnConsultar);
-            panelConsultar.Controls.Add(inpSerie);
             panelConsultar.Controls.Add(txtSerie);
             panelConsultar.Controls.Add(txtTitulo);
             panelConsultar.Location = new Point(-2, 1);
@@ -64,15 +64,6 @@
             btnConsultar.TabIndex = 5;
             btnConsultar.Text = "Consultar";
             btnConsultar.UseVisualStyleBackColor = false;
-            // 
-            // inpSerie
-            // 
-            inpSerie.BorderStyle = BorderStyle.FixedSingle;
-            inpSerie.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            inpSerie.Location = new Point(24, 167);
-            inpSerie.Name = "inpSerie";
-            inpSerie.Size = new Size(151, 33);
-            inpSerie.TabIndex = 4;
             // 
             // txtSerie
             // 
@@ -114,6 +105,15 @@
             TelaConsulta.Size = new Size(477, 243);
             TelaConsulta.TabIndex = 3;
             // 
+            // comboBoxConsultar
+            // 
+            comboBoxConsultar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            comboBoxConsultar.FormattingEnabled = true;
+            comboBoxConsultar.Location = new Point(24, 167);
+            comboBoxConsultar.Name = "comboBoxConsultar";
+            comboBoxConsultar.Size = new Size(151, 33);
+            comboBoxConsultar.TabIndex = 6;
+            // 
             // frmTelaConsultar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -137,10 +137,10 @@
 
         private Panel panelConsultar;
         private Label txtTitulo;
-        private TextBox inpSerie;
         private Label txtSerie;
         private Button btnConsultar;
         private PictureBox imgTelaConsultar;
         private DataGridView TelaConsulta;
+        private ComboBox comboBoxConsultar;
     }
 }

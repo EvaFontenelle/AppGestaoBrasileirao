@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             panelConsultar = new Panel();
-            txtTitulo = new Label();
-            txtSerie = new Label();
-            inpSerie = new TextBox();
             btnConsultar = new Button();
+            inpSerie = new TextBox();
+            txtSerie = new Label();
+            txtTitulo = new Label();
             imgTelaConsultar = new PictureBox();
             TelaConsulta = new DataGridView();
             panelConsultar.SuspendLayout();
@@ -52,37 +52,6 @@
             panelConsultar.Size = new Size(197, 450);
             panelConsultar.TabIndex = 1;
             // 
-            // txtTitulo
-            // 
-            txtTitulo.AutoSize = true;
-            txtTitulo.Font = new Font("Arial", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtTitulo.ForeColor = Color.White;
-            txtTitulo.Location = new Point(12, 8);
-            txtTitulo.Name = "txtTitulo";
-            txtTitulo.Size = new Size(176, 74);
-            txtTitulo.TabIndex = 2;
-            txtTitulo.Text = "Consultar \r\n    times";
-            // 
-            // txtSerie
-            // 
-            txtSerie.AutoSize = true;
-            txtSerie.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtSerie.ForeColor = Color.White;
-            txtSerie.Location = new Point(24, 146);
-            txtSerie.Name = "txtSerie";
-            txtSerie.Size = new Size(50, 18);
-            txtSerie.TabIndex = 3;
-            txtSerie.Text = "Série:";
-            // 
-            // inpSerie
-            // 
-            inpSerie.BorderStyle = BorderStyle.FixedSingle;
-            inpSerie.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            inpSerie.Location = new Point(24, 167);
-            inpSerie.Name = "inpSerie";
-            inpSerie.Size = new Size(151, 33);
-            inpSerie.TabIndex = 4;
-            // 
             // btnConsultar
             // 
             btnConsultar.BackColor = Color.SpringGreen;
@@ -95,6 +64,37 @@
             btnConsultar.TabIndex = 5;
             btnConsultar.Text = "Consultar";
             btnConsultar.UseVisualStyleBackColor = false;
+            // 
+            // inpSerie
+            // 
+            inpSerie.BorderStyle = BorderStyle.FixedSingle;
+            inpSerie.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            inpSerie.Location = new Point(24, 167);
+            inpSerie.Name = "inpSerie";
+            inpSerie.Size = new Size(151, 33);
+            inpSerie.TabIndex = 4;
+            // 
+            // txtSerie
+            // 
+            txtSerie.AutoSize = true;
+            txtSerie.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtSerie.ForeColor = Color.White;
+            txtSerie.Location = new Point(24, 146);
+            txtSerie.Name = "txtSerie";
+            txtSerie.Size = new Size(50, 18);
+            txtSerie.TabIndex = 3;
+            txtSerie.Text = "Série:";
+            // 
+            // txtTitulo
+            // 
+            txtTitulo.AutoSize = true;
+            txtTitulo.Font = new Font("Arial", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtTitulo.ForeColor = Color.White;
+            txtTitulo.Location = new Point(12, 8);
+            txtTitulo.Name = "txtTitulo";
+            txtTitulo.Size = new Size(176, 74);
+            txtTitulo.TabIndex = 2;
+            txtTitulo.Text = "Consultar \r\n    times";
             // 
             // imgTelaConsultar
             // 
@@ -118,6 +118,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             ClientSize = new Size(800, 450);
             Controls.Add(TelaConsulta);
             Controls.Add(imgTelaConsultar);

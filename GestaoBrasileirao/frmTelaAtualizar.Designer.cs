@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             panelAtualizar = new Panel();
+            btnApagar = new Button();
+            btnAtualizar = new Button();
             btnInserir = new Button();
             inpSerie = new TextBox();
             txtSerie = new Label();
             txtTitulo = new Label();
-            btnAtualizar = new Button();
-            btnApagar = new Button();
             imgFundo = new PictureBox();
             panelAtualizar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)imgFundo).BeginInit();
@@ -53,6 +53,32 @@
             panelAtualizar.Name = "panelAtualizar";
             panelAtualizar.Size = new Size(206, 450);
             panelAtualizar.TabIndex = 2;
+            // 
+            // btnApagar
+            // 
+            btnApagar.BackColor = Color.Red;
+            btnApagar.FlatStyle = FlatStyle.Flat;
+            btnApagar.Font = new Font("Arial", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnApagar.ForeColor = Color.DarkBlue;
+            btnApagar.Location = new Point(24, 322);
+            btnApagar.Name = "btnApagar";
+            btnApagar.Size = new Size(151, 52);
+            btnApagar.TabIndex = 6;
+            btnApagar.Text = "Apagar";
+            btnApagar.UseVisualStyleBackColor = false;
+            // 
+            // btnAtualizar
+            // 
+            btnAtualizar.BackColor = Color.LightSeaGreen;
+            btnAtualizar.FlatStyle = FlatStyle.Flat;
+            btnAtualizar.Font = new Font("Arial", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAtualizar.ForeColor = Color.DarkBlue;
+            btnAtualizar.Location = new Point(24, 264);
+            btnAtualizar.Name = "btnAtualizar";
+            btnAtualizar.Size = new Size(151, 52);
+            btnAtualizar.TabIndex = 6;
+            btnAtualizar.Text = "Atualizar";
+            btnAtualizar.UseVisualStyleBackColor = false;
             // 
             // btnInserir
             // 
@@ -97,32 +123,6 @@
             txtTitulo.Size = new Size(155, 74);
             txtTitulo.TabIndex = 2;
             txtTitulo.Text = "Atualizar\r\n   times";
-            // 
-            // btnAtualizar
-            // 
-            btnAtualizar.BackColor = Color.LightSeaGreen;
-            btnAtualizar.FlatStyle = FlatStyle.Flat;
-            btnAtualizar.Font = new Font("Arial", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnAtualizar.ForeColor = Color.DarkBlue;
-            btnAtualizar.Location = new Point(24, 264);
-            btnAtualizar.Name = "btnAtualizar";
-            btnAtualizar.Size = new Size(151, 52);
-            btnAtualizar.TabIndex = 6;
-            btnAtualizar.Text = "Atualizar";
-            btnAtualizar.UseVisualStyleBackColor = false;
-            // 
-            // btnApagar
-            // 
-            btnApagar.BackColor = Color.Red;
-            btnApagar.FlatStyle = FlatStyle.Flat;
-            btnApagar.Font = new Font("Arial", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnApagar.ForeColor = Color.DarkBlue;
-            btnApagar.Location = new Point(24, 322);
-            btnApagar.Name = "btnApagar";
-            btnApagar.Size = new Size(151, 52);
-            btnApagar.TabIndex = 6;
-            btnApagar.Text = "Apagar";
-            btnApagar.UseVisualStyleBackColor = false;
             // 
             // imgFundo
             // 

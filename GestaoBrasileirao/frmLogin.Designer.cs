@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             btnSair = new Button();
             btnEntrar = new Button();
             txtTitulo = new Label();
@@ -91,10 +92,10 @@
             // imgBrasileirao2026
             // 
             imgBrasileirao2026.BackColor = Color.Transparent;
-            imgBrasileirao2026.Image = Properties.Resources.Brasileirao2026;
-            imgBrasileirao2026.Location = new Point(51, 33);
+            imgBrasileirao2026.Image = (Image)resources.GetObject("imgBrasileirao2026.Image");
+            imgBrasileirao2026.Location = new Point(47, 60);
             imgBrasileirao2026.Name = "imgBrasileirao2026";
-            imgBrasileirao2026.Size = new Size(386, 369);
+            imgBrasileirao2026.Size = new Size(361, 351);
             imgBrasileirao2026.SizeMode = PictureBoxSizeMode.Zoom;
             imgBrasileirao2026.TabIndex = 0;
             imgBrasileirao2026.TabStop = false;
@@ -103,6 +104,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             ClientSize = new Size(800, 450);
             Controls.Add(imgBrasileirao2026);
             Controls.Add(Rodape);

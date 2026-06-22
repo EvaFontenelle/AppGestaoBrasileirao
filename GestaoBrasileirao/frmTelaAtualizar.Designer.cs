@@ -54,8 +54,8 @@
             lblDerrotas = new Label();
             radioBtnNome = new RadioButton();
             panelTelaAtualizar = new Panel();
-            radioBtnPosicao = new RadioButton();
             inpRadioBtn = new TextBox();
+            radioBtnPosicao = new RadioButton();
             TelaAtualizar = new DataGridView();
             panelAtualizar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)imgFundo).BeginInit();
@@ -81,6 +81,7 @@
             // 
             comboBoxAtualizar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             comboBoxAtualizar.FormattingEnabled = true;
+            comboBoxAtualizar.Items.AddRange(new object[] { "", "Série A", "Série B", "Série C", "Série D" });
             comboBoxAtualizar.Location = new Point(24, 146);
             comboBoxAtualizar.Name = "comboBoxAtualizar";
             comboBoxAtualizar.Size = new Size(151, 33);
@@ -340,6 +341,15 @@
             panelTelaAtualizar.Size = new Size(599, 90);
             panelTelaAtualizar.TabIndex = 22;
             // 
+            // inpRadioBtn
+            // 
+            inpRadioBtn.BackColor = Color.Silver;
+            inpRadioBtn.Font = new Font("Segoe UI", 14F);
+            inpRadioBtn.Location = new Point(331, 46);
+            inpRadioBtn.Name = "inpRadioBtn";
+            inpRadioBtn.Size = new Size(243, 32);
+            inpRadioBtn.TabIndex = 23;
+            // 
             // radioBtnPosicao
             // 
             radioBtnPosicao.AutoSize = true;
@@ -351,15 +361,6 @@
             radioBtnPosicao.TabStop = true;
             radioBtnPosicao.Text = "Posição";
             radioBtnPosicao.UseVisualStyleBackColor = true;
-            // 
-            // inpRadioBtn
-            // 
-            inpRadioBtn.BackColor = Color.Silver;
-            inpRadioBtn.Font = new Font("Segoe UI", 14F);
-            inpRadioBtn.Location = new Point(331, 46);
-            inpRadioBtn.Name = "inpRadioBtn";
-            inpRadioBtn.Size = new Size(243, 32);
-            inpRadioBtn.TabIndex = 23;
             // 
             // TelaAtualizar
             // 

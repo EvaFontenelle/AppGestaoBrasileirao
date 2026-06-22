@@ -33,7 +33,7 @@
             btnConsultar = new Button();
             imgTelaPrincipal = new PictureBox();
             txtTitulo = new Label();
-            ltxtSubTitulo = new Label();
+            txtSubTitulo = new Label();
             panelPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)imgTelaPrincipal).BeginInit();
             SuspendLayout();
@@ -97,16 +97,16 @@
             txtTitulo.TabIndex = 2;
             txtTitulo.Text = "Sistema de controle de \r\n               times";
             // 
-            // ltxtSubTitulo
+            // txtSubTitulo
             // 
-            ltxtSubTitulo.AutoSize = true;
-            ltxtSubTitulo.Font = new Font("Arial", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            ltxtSubTitulo.ForeColor = Color.DarkBlue;
-            ltxtSubTitulo.Location = new Point(408, 396);
-            ltxtSubTitulo.Name = "ltxtSubTitulo";
-            ltxtSubTitulo.Size = new Size(192, 32);
-            ltxtSubTitulo.TabIndex = 3;
-            ltxtSubTitulo.Text = "Tela principal";
+            txtSubTitulo.AutoSize = true;
+            txtSubTitulo.Font = new Font("Arial", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtSubTitulo.ForeColor = Color.DarkBlue;
+            txtSubTitulo.Location = new Point(408, 396);
+            txtSubTitulo.Name = "txtSubTitulo";
+            txtSubTitulo.Size = new Size(192, 32);
+            txtSubTitulo.TabIndex = 3;
+            txtSubTitulo.Text = "Tela principal";
             // 
             // frmPrincipal
             // 
@@ -114,7 +114,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(800, 450);
-            Controls.Add(ltxtSubTitulo);
+            Controls.Add(txtSubTitulo);
             Controls.Add(txtTitulo);
             Controls.Add(imgTelaPrincipal);
             Controls.Add(panelPrincipal);
@@ -134,6 +134,6 @@
         private Label txtTitulo;
         private Button btnAtualizar;
         private Button btnConsultar;
-        private Label ltxtSubTitulo;
+        private Label txtSubTitulo;
     }
 }

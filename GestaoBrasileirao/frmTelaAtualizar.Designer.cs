@@ -79,6 +79,7 @@
             // 
             // comboBoxAtualizar
             // 
+            comboBoxAtualizar.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxAtualizar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             comboBoxAtualizar.FormattingEnabled = true;
             comboBoxAtualizar.Items.AddRange(new object[] { "", "Série A", "Série B", "Série C", "Série D" });

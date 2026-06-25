@@ -12,7 +12,7 @@ namespace GestaoBrasileirao
             this.Visible = false;
             frmPrincipal principal = new frmPrincipal();
             principal.ShowDialog();
-            
+
         }
 
         private void btnSair_Click(object sender, EventArgs e)

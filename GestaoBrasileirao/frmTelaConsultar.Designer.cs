@@ -54,7 +54,7 @@
             // 
             // comboBoxConsultar
             // 
-            comboBoxConsultar.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxConsultar.DropDownStyle = ComboBoxStyle.Simple;
             comboBoxConsultar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             comboBoxConsultar.FormattingEnabled = true;
             comboBoxConsultar.Items.AddRange(new object[] { "", "Série A", "Série B", "Série C", "Série D" });

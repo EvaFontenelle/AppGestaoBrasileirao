@@ -8,7 +8,7 @@ namespace GestaoBrasileirao
 {
     public static class ApiRotasController
     {
-        private static readonly string baseUrl = "";
+        private static readonly string baseUrl = "http://127.0.0.1:5000";
 
         public static string ConsultarSerieA => $"{baseUrl}/SerieA";
         public static string ConsultarSerieB => $"{baseUrl}/SerieB";

@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             panelConsultar = new Panel();
-            comboBoxConsultar = new ComboBox();
             btnConsultar = new Button();
             txtSerie = new Label();
             txtTitulo = new Label();
             imgTelaConsultar = new PictureBox();
             TelaConsulta = new DataGridView();
+            comboBoxConsultar = new ComboBox();
             panelConsultar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)imgTelaConsultar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)TelaConsulta).BeginInit();
@@ -51,17 +51,6 @@
             panelConsultar.Name = "panelConsultar";
             panelConsultar.Size = new Size(197, 450);
             panelConsultar.TabIndex = 1;
-            // 
-            // comboBoxConsultar
-            // 
-            comboBoxConsultar.DropDownStyle = ComboBoxStyle.Simple;
-            comboBoxConsultar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            comboBoxConsultar.FormattingEnabled = true;
-            comboBoxConsultar.Items.AddRange(new object[] { "", "Série A", "Série B", "Série C", "Série D" });
-            comboBoxConsultar.Location = new Point(24, 167);
-            comboBoxConsultar.Name = "comboBoxConsultar";
-            comboBoxConsultar.Size = new Size(151, 33);
-            comboBoxConsultar.TabIndex = 6;
             // 
             // btnConsultar
             // 
@@ -115,6 +104,17 @@
             TelaConsulta.Name = "TelaConsulta";
             TelaConsulta.Size = new Size(477, 243);
             TelaConsulta.TabIndex = 3;
+            // 
+            // comboBoxConsultar
+            // 
+            comboBoxConsultar.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxConsultar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            comboBoxConsultar.FormattingEnabled = true;
+            comboBoxConsultar.Items.AddRange(new object[] { "", "Série A", "Série B", "Série C", "Série D" });
+            comboBoxConsultar.Location = new Point(24, 167);
+            comboBoxConsultar.Name = "comboBoxConsultar";
+            comboBoxConsultar.Size = new Size(151, 33);
+            comboBoxConsultar.TabIndex = 8;
             // 
             // frmTelaConsultar
             // 

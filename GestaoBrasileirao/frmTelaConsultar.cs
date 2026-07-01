@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Windows.Forms;
 
@@ -48,24 +50,124 @@ namespace GestaoBrasileirao
             }
         }
 
-        private async Task SerieD()
+        private async Task SerieA()
         {
-            throw new NotImplementedException();
+            string apiUrl = ApiRotasController.ConsultarSerieA;
+
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    HttpResponseMessage response = await client.GetAsync(apiUrl);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var jsonString = await response.Content.ReadAsStringAsync();
+                        var dados = JsonConvert.DeserializeObject<List<ConsultarSerieAModel>>(jsonString);
+
+                        TelaConsulta.DataSource = dados;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Erro ao buscar dados da API: " + response.StatusCode);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao conectar à API: " + ex.Message);
+                }
+            }
+        }    
+
+        private async Task SerieB()
+        {
+            string apiUrl = ApiRotasController.ConsultarSerieB;
+
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    HttpResponseMessage response = await client.GetAsync(apiUrl);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var jsonString = await response.Content.ReadAsStringAsync();
+                        var dados = JsonConvert.DeserializeObject<List<ConsultarSerieBModel>>(jsonString);
+
+                        TelaConsulta.DataSource = dados;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Erro ao buscar dados da API: " + response.StatusCode);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao conectar à API: " + ex.Message);
+                }
+            }
         }
 
         private async Task SerieC()
         {
-            throw new NotImplementedException();
+            string apiUrl = ApiRotasController.ConsultarSerieC;
+
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    HttpResponseMessage response = await client.GetAsync(apiUrl);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var jsonString = await response.Content.ReadAsStringAsync();
+                        var dados = JsonConvert.DeserializeObject<List<ConsultarSerieCModel>>(jsonString);
+
+                        TelaConsulta.DataSource = dados;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Erro ao buscar dados da API: " + response.StatusCode);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao conectar à API: " + ex.Message);
+                }
+            }
         }
 
-        private async Task SerieB()
+        private async Task SerieD()
         {
-            throw new NotImplementedException();
-        }
+            string apiUrl = ApiRotasController.ConsultarSerieD;
 
-        private async Task SerieA()
-        {
-            throw new NotImplementedException();
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    HttpResponseMessage response = await client.GetAsync(apiUrl);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var jsonString = await response.Content.ReadAsStringAsync();
+                        var dados = JsonConvert.DeserializeObject<List<ConsultarSerieDModel>>(jsonString);
+
+                        TelaConsulta.DataSource = dados;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Erro ao buscar dados da API: " + response.StatusCode);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao conectar à API: " + ex.Message);
+                }
+            }
         }
     }
 }

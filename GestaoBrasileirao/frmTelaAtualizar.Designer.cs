@@ -87,6 +87,7 @@
             comboBoxAtualizar.Name = "comboBoxAtualizar";
             comboBoxAtualizar.Size = new Size(151, 33);
             comboBoxAtualizar.TabIndex = 7;
+            comboBoxAtualizar.SelectedValueChanged += comboBoxAtualizar_SelectedValueChanged;
             // 
             // btnApagar
             // 

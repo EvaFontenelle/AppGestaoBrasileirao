@@ -127,6 +127,7 @@
             btnInserir.TabIndex = 5;
             btnInserir.Text = "Inserir";
             btnInserir.UseVisualStyleBackColor = false;
+            btnInserir.Click += btnInserir_Click;
             // 
             // txtSerie
             // 
@@ -371,6 +372,7 @@
             TelaAtualizar.Name = "TelaAtualizar";
             TelaAtualizar.Size = new Size(526, 130);
             TelaAtualizar.TabIndex = 23;
+            TelaAtualizar.CellClick += TelaAtualizar_CellClick;
             // 
             // frmTelaAtualizar
             // 

@@ -114,6 +114,7 @@
             btnAtualizar.TabIndex = 6;
             btnAtualizar.Text = "Atualizar";
             btnAtualizar.UseVisualStyleBackColor = false;
+            btnAtualizar.Click += btnAtualizar_Click;
             // 
             // btnInserir
             // 

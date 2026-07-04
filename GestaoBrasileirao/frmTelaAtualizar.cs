@@ -166,11 +166,38 @@ namespace GestaoBrasileirao
             }
         }
 
+        private int? _idSelecionado = null;
         private void TelaAtualizar_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow linha = TelaAtualizar.Rows[e.RowIndex];
+
+                string serie = comboBoxAtualizar.Text;
+
+                switch (serie)
+                {
+                    case "Série A":
+                        _idSelecionado = Convert.ToInt32(linha.Cells["idSerieA"].Value);
+                        break;
+
+                    case "Série B":
+                        _idSelecionado = Convert.ToInt32(linha.Cells["idSerieB"].Value);
+                        break;
+
+                    case "Série C":
+                        _idSelecionado = Convert.ToInt32(linha.Cells["idSerieC"].Value);
+                        break;
+
+                    case "Série D":
+                        _idSelecionado = Convert.ToInt32(linha.Cells["idSerieD"].Value);
+                        break;
+
+                    default:
+                        MessageBox.Show("Selecione alguma série para prosseguir!");
+                        break;
+                }
 
                 inpNome.Text = linha.Cells["NomeClube"].Value?.ToString();
                 inpPontos.Text = linha.Cells["PontosClube"].Value?.ToString();
@@ -386,6 +413,243 @@ namespace GestaoBrasileirao
                     else
                     {
                         MessageBox.Show("Erro ao inserir.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private async void btnAtualizar_Click(object sender, EventArgs e)
+        {
+            string serie = comboBoxAtualizar.Text;
+
+            switch (serie)
+            {
+                case "Série A":
+                    await atualizarSerieA();
+                    break;
+
+                case "Série B":
+                    await atualizarSerieB();
+                    break;
+
+                case "Série C":
+                    await atualizarSerieC();
+                    break;
+
+                case "Série D":
+                    await atualizarSerieD();
+                    break;
+
+                default:
+                    MessageBox.Show("Selecione alguma série para prosseguir!");
+                    break;
+            }
+        }
+
+        private async Task atualizarSerieA()
+        {
+            // 1) Garantir que temos um ID
+            if (_idSelecionado == null)
+            {
+                MessageBox.Show("Selecione um registro antes de editar.", "Nenhum item selecionado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // 2) Monta objeto com os campos (use os nomes esperados pela API)
+            var clubeAtualizado = new
+            {
+                NomeClube = inpNome.Text.Trim(),
+                PontosClube = int.Parse(inpPontos.Text),
+                JogosClube = int.Parse(inpJogos.Text),
+                SaldoGols = int.Parse(inpSaldo.Text),
+                VitoriasClube = int.Parse(inpVitorias.Text),
+                DerrotasClube = int.Parse(inpDerrotas.Text),
+                EmpatesClube = int.Parse(inpEmpates.Text),
+                PosicaoTabela = int.Parse(inpPosicao.Text)
+            };
+
+            // 3) Validação mínima (exemplo)
+            if (string.IsNullOrWhiteSpace(clubeAtualizado.NomeClube) ||
+                !int.TryParse(inpPontos.Text, out _) ||
+    !int.TryParse(inpJogos.Text, out _) ||
+    !int.TryParse(inpSaldo.Text, out _) ||
+    !int.TryParse(inpVitorias.Text, out _) ||
+    !int.TryParse(inpDerrotas.Text, out _) ||
+    !int.TryParse(inpEmpates.Text, out _) ||
+    !int.TryParse(inpPosicao.Text, out _))
+            {
+                MessageBox.Show("Preencha todos os campos antes de salvar.", "Campos faltando", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // 4) Confirmação opcional
+            var respConf = MessageBox.Show("Confirma a alteração deste usuário?", "Confirmar edição", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (respConf != DialogResult.Yes) return;
+
+            // 5) Envia PUT para /CadastroUsuario/<id>
+            string apiPutUrl = $"{ApiRotasController.ConsultarSerieA}/{_idSelecionado}";
+            string jsonBody = JsonConvert.SerializeObject(clubeAtualizado);
+
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+
+            var content = new StringContent(jsonBody, Encoding.UTF8, "application/json");
+
+            HttpResponseMessage resposta = await client.PutAsync(apiPutUrl, content);
+
+            if (resposta.IsSuccessStatusCode)      // 200 ou 204
+            {
+                MessageBox.Show("Registro atualizado com sucesso!",
+                                "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // 6) Limpa seleção e recarrega grade
+                _idSelecionado = null;
+                
+            }
+            else
+            {
+                string detalhe = await resposta.Content.ReadAsStringAsync();
+                MessageBox.Show($"Erro ao atualizar: {resposta.StatusCode}\n{detalhe}",
+                                "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private async Task atualizarSerieB()
+        {
+            ConsultarSerieBModel clube = new ConsultarSerieBModel
+            {
+                NomeClube = inpNome.Text,
+                PontosClube = int.Parse(inpPontos.Text),
+                JogosClube = int.Parse(inpJogos.Text),
+                SaldoGols = int.Parse(inpSaldo.Text),
+                VitoriasClube = int.Parse(inpVitorias.Text),
+                DerrotasClube = int.Parse(inpDerrotas.Text),
+                EmpatesClube = int.Parse(inpEmpates.Text),
+                PosicaoTabela = int.Parse(inpPosicao.Text)
+            };
+
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    var json = JsonConvert.SerializeObject(clube);
+
+                    var conteudo = new StringContent(
+                        json,
+                        Encoding.UTF8,
+                        "application/json");
+
+                    HttpResponseMessage response =
+                        await client.PutAsync(ApiRotasController.ConsultarSerieB, conteudo);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Registro atualizado com sucesso!");
+
+                        await SerieA();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Erro ao atualizar.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private async Task atualizarSerieC()
+        {
+            ConsultarSerieCModel clube = new ConsultarSerieCModel
+            {
+                NomeClube = inpNome.Text,
+                PontosClube = int.Parse(inpPontos.Text),
+                JogosClube = int.Parse(inpJogos.Text),
+                SaldoGols = int.Parse(inpSaldo.Text),
+                VitoriasClube = int.Parse(inpVitorias.Text),
+                DerrotasClube = int.Parse(inpDerrotas.Text),
+                EmpatesClube = int.Parse(inpEmpates.Text),
+                PosicaoTabela = int.Parse(inpPosicao.Text)
+            };
+
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    var json = JsonConvert.SerializeObject(clube);
+
+                    var conteudo = new StringContent(
+                        json,
+                        Encoding.UTF8,
+                        "application/json");
+
+                    HttpResponseMessage response =
+                        await client.PutAsync(ApiRotasController.ConsultarSerieC, conteudo);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Registro atualizado com sucesso!");
+
+                        await SerieA();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Erro ao atualizar.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private async Task atualizarSerieD()
+        {
+            ConsultarSerieDModel clube = new ConsultarSerieDModel
+            {
+                NomeClube = inpNome.Text,
+                PontosClube = int.Parse(inpPontos.Text),
+                JogosClube = int.Parse(inpJogos.Text),
+                SaldoGols = int.Parse(inpSaldo.Text),
+                VitoriasClube = int.Parse(inpVitorias.Text),
+                DerrotasClube = int.Parse(inpDerrotas.Text),
+                EmpatesClube = int.Parse(inpEmpates.Text),
+                PosicaoTabela = int.Parse(inpPosicao.Text)
+            };
+
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    var json = JsonConvert.SerializeObject(clube);
+
+                    var conteudo = new StringContent(
+                        json,
+                        Encoding.UTF8,
+                        "application/json");
+
+                    HttpResponseMessage response =
+                        await client.PutAsync(ApiRotasController.ConsultarSerieD, conteudo);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Registro atualizado com sucesso!");
+
+                        await SerieA();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Erro ao atualizar.");
                     }
                 }
                 catch (Exception ex)

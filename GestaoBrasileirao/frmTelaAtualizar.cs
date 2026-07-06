@@ -475,12 +475,12 @@ namespace GestaoBrasileirao
             // 3) Validação mínima (exemplo)
             if (string.IsNullOrWhiteSpace(clubeAtualizado.NomeClube) ||
                 !int.TryParse(inpPontos.Text, out _) ||
-    !int.TryParse(inpJogos.Text, out _) ||
-    !int.TryParse(inpSaldo.Text, out _) ||
-    !int.TryParse(inpVitorias.Text, out _) ||
-    !int.TryParse(inpDerrotas.Text, out _) ||
-    !int.TryParse(inpEmpates.Text, out _) ||
-    !int.TryParse(inpPosicao.Text, out _))
+                !int.TryParse(inpJogos.Text, out _) ||
+                !int.TryParse(inpSaldo.Text, out _) ||
+                !int.TryParse(inpVitorias.Text, out _) ||
+                !int.TryParse(inpDerrotas.Text, out _) ||
+                !int.TryParse(inpEmpates.Text, out _) ||
+                !int.TryParse(inpPosicao.Text, out _))
             {
                 MessageBox.Show("Preencha todos os campos antes de salvar.", "Campos faltando", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -511,7 +511,7 @@ namespace GestaoBrasileirao
 
                 // 6) Limpa seleção e recarrega grade
                 _idSelecionado = null;
-                
+
             }
             else
             {
@@ -523,9 +523,17 @@ namespace GestaoBrasileirao
 
         private async Task atualizarSerieB()
         {
-            ConsultarSerieBModel clube = new ConsultarSerieBModel
+            // 1) Garantir que temos um ID
+            if (_idSelecionado == null)
             {
-                NomeClube = inpNome.Text,
+                MessageBox.Show("Selecione um registro antes de editar.", "Nenhum item selecionado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // 2) Monta objeto com os campos (use os nomes esperados pela API)
+            var clubeAtualizado = new
+            {
+                NomeClube = inpNome.Text.Trim(),
                 PontosClube = int.Parse(inpPontos.Text),
                 JogosClube = int.Parse(inpJogos.Text),
                 SaldoGols = int.Parse(inpSaldo.Text),
@@ -535,43 +543,68 @@ namespace GestaoBrasileirao
                 PosicaoTabela = int.Parse(inpPosicao.Text)
             };
 
-            using (HttpClient client = new HttpClient())
+            // 3) Validação mínima (exemplo)
+            if (string.IsNullOrWhiteSpace(clubeAtualizado.NomeClube) ||
+                !int.TryParse(inpPontos.Text, out _) ||
+                !int.TryParse(inpJogos.Text, out _) ||
+                !int.TryParse(inpSaldo.Text, out _) ||
+                !int.TryParse(inpVitorias.Text, out _) ||
+                !int.TryParse(inpDerrotas.Text, out _) ||
+                !int.TryParse(inpEmpates.Text, out _) ||
+                !int.TryParse(inpPosicao.Text, out _))
             {
-                try
-                {
-                    var json = JsonConvert.SerializeObject(clube);
+                MessageBox.Show("Preencha todos os campos antes de salvar.", "Campos faltando", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-                    var conteudo = new StringContent(
-                        json,
-                        Encoding.UTF8,
-                        "application/json");
+            // 4) Confirmação opcional
+            var respConf = MessageBox.Show("Confirma a alteração deste usuário?", "Confirmar edição", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                    HttpResponseMessage response =
-                        await client.PutAsync(ApiRotasController.ConsultarSerieB, conteudo);
+            if (respConf != DialogResult.Yes) return;
 
-                    if (response.IsSuccessStatusCode)
-                    {
-                        MessageBox.Show("Registro atualizado com sucesso!");
+            // 5) Envia PUT para /CadastroUsuario/<id>
+            string apiPutUrl = $"{ApiRotasController.ConsultarSerieB}/{_idSelecionado}";
+            string jsonBody = JsonConvert.SerializeObject(clubeAtualizado);
 
-                        await SerieA();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Erro ao atualizar.");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+
+            var content = new StringContent(jsonBody, Encoding.UTF8, "application/json");
+
+            HttpResponseMessage resposta = await client.PutAsync(apiPutUrl, content);
+
+            if (resposta.IsSuccessStatusCode)      // 200 ou 204
+            {
+                MessageBox.Show("Registro atualizado com sucesso!",
+                                "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // 6) Limpa seleção e recarrega grade
+                _idSelecionado = null;
+
+            }
+            else
+            {
+                string detalhe = await resposta.Content.ReadAsStringAsync();
+                MessageBox.Show($"Erro ao atualizar: {resposta.StatusCode}\n{detalhe}",
+                                "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private async Task atualizarSerieC()
         {
-            ConsultarSerieCModel clube = new ConsultarSerieCModel
+            // 1) Garantir que temos um ID
+            if (_idSelecionado == null)
             {
-                NomeClube = inpNome.Text,
+                MessageBox.Show("Selecione um registro antes de editar.", "Nenhum item selecionado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // 2) Monta objeto com os campos (use os nomes esperados pela API)
+            var clubeAtualizado = new
+            {
+                NomeClube = inpNome.Text.Trim(),
                 PontosClube = int.Parse(inpPontos.Text),
                 JogosClube = int.Parse(inpJogos.Text),
                 SaldoGols = int.Parse(inpSaldo.Text),
@@ -581,43 +614,68 @@ namespace GestaoBrasileirao
                 PosicaoTabela = int.Parse(inpPosicao.Text)
             };
 
-            using (HttpClient client = new HttpClient())
+            // 3) Validação mínima (exemplo)
+            if (string.IsNullOrWhiteSpace(clubeAtualizado.NomeClube) ||
+                !int.TryParse(inpPontos.Text, out _) ||
+                !int.TryParse(inpJogos.Text, out _) ||
+                !int.TryParse(inpSaldo.Text, out _) ||
+                !int.TryParse(inpVitorias.Text, out _) ||
+                !int.TryParse(inpDerrotas.Text, out _) ||
+                !int.TryParse(inpEmpates.Text, out _) ||
+                !int.TryParse(inpPosicao.Text, out _))
             {
-                try
-                {
-                    var json = JsonConvert.SerializeObject(clube);
+                MessageBox.Show("Preencha todos os campos antes de salvar.", "Campos faltando", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-                    var conteudo = new StringContent(
-                        json,
-                        Encoding.UTF8,
-                        "application/json");
+            // 4) Confirmação opcional
+            var respConf = MessageBox.Show("Confirma a alteração deste usuário?", "Confirmar edição", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                    HttpResponseMessage response =
-                        await client.PutAsync(ApiRotasController.ConsultarSerieC, conteudo);
+            if (respConf != DialogResult.Yes) return;
 
-                    if (response.IsSuccessStatusCode)
-                    {
-                        MessageBox.Show("Registro atualizado com sucesso!");
+            // 5) Envia PUT para /CadastroUsuario/<id>
+            string apiPutUrl = $"{ApiRotasController.ConsultarSerieC}/{_idSelecionado}";
+            string jsonBody = JsonConvert.SerializeObject(clubeAtualizado);
 
-                        await SerieA();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Erro ao atualizar.");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+
+            var content = new StringContent(jsonBody, Encoding.UTF8, "application/json");
+
+            HttpResponseMessage resposta = await client.PutAsync(apiPutUrl, content);
+
+            if (resposta.IsSuccessStatusCode)      // 200 ou 204
+            {
+                MessageBox.Show("Registro atualizado com sucesso!",
+                                "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // 6) Limpa seleção e recarrega grade
+                _idSelecionado = null;
+
+            }
+            else
+            {
+                string detalhe = await resposta.Content.ReadAsStringAsync();
+                MessageBox.Show($"Erro ao atualizar: {resposta.StatusCode}\n{detalhe}",
+                                "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private async Task atualizarSerieD()
         {
-            ConsultarSerieDModel clube = new ConsultarSerieDModel
+            // 1) Garantir que temos um ID
+            if (_idSelecionado == null)
             {
-                NomeClube = inpNome.Text,
+                MessageBox.Show("Selecione um registro antes de editar.", "Nenhum item selecionado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // 2) Monta objeto com os campos (use os nomes esperados pela API)
+            var clubeAtualizado = new
+            {
+                NomeClube = inpNome.Text.Trim(),
                 PontosClube = int.Parse(inpPontos.Text),
                 JogosClube = int.Parse(inpJogos.Text),
                 SaldoGols = int.Parse(inpSaldo.Text),
@@ -627,36 +685,54 @@ namespace GestaoBrasileirao
                 PosicaoTabela = int.Parse(inpPosicao.Text)
             };
 
-            using (HttpClient client = new HttpClient())
+            // 3) Validação mínima (exemplo)
+            if (string.IsNullOrWhiteSpace(clubeAtualizado.NomeClube) ||
+                !int.TryParse(inpPontos.Text, out _) ||
+                !int.TryParse(inpJogos.Text, out _) ||
+                !int.TryParse(inpSaldo.Text, out _) ||
+                !int.TryParse(inpVitorias.Text, out _) ||
+                !int.TryParse(inpDerrotas.Text, out _) ||
+                !int.TryParse(inpEmpates.Text, out _) ||
+                !int.TryParse(inpPosicao.Text, out _))
             {
-                try
-                {
-                    var json = JsonConvert.SerializeObject(clube);
+                MessageBox.Show("Preencha todos os campos antes de salvar.", "Campos faltando", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-                    var conteudo = new StringContent(
-                        json,
-                        Encoding.UTF8,
-                        "application/json");
+            // 4) Confirmação opcional
+            var respConf = MessageBox.Show("Confirma a alteração deste usuário?", "Confirmar edição", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                    HttpResponseMessage response =
-                        await client.PutAsync(ApiRotasController.ConsultarSerieD, conteudo);
+            if (respConf != DialogResult.Yes) return;
 
-                    if (response.IsSuccessStatusCode)
-                    {
-                        MessageBox.Show("Registro atualizado com sucesso!");
+            // 5) Envia PUT para /CadastroUsuario/<id>
+            string apiPutUrl = $"{ApiRotasController.ConsultarSerieD}/{_idSelecionado}";
+            string jsonBody = JsonConvert.SerializeObject(clubeAtualizado);
 
-                        await SerieA();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Erro ao atualizar.");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+
+            var content = new StringContent(jsonBody, Encoding.UTF8, "application/json");
+
+            HttpResponseMessage resposta = await client.PutAsync(apiPutUrl, content);
+
+            if (resposta.IsSuccessStatusCode)      // 200 ou 204
+            {
+                MessageBox.Show("Registro atualizado com sucesso!",
+                                "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // 6) Limpa seleção e recarrega grade
+                _idSelecionado = null;
+
+            }
+            else
+            {
+                string detalhe = await resposta.Content.ReadAsStringAsync();
+                MessageBox.Show($"Erro ao atualizar: {resposta.StatusCode}\n{detalhe}",
+                                "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
 }

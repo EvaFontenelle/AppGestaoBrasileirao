@@ -963,5 +963,29 @@ namespace GestaoBrasileirao
                 }
             }
         }
+
+        private async void inpRadioBtn_TextChanged(object sender, EventArgs e)
+        {
+            if (radioBtnNome.Checked)
+            {
+                await PesquisarPorNome(inpRadioBtn.Text);
+            }
+            else if (radioBtnPosicao.Checked)
+            {
+                await PesquisarPorPosicao(inpRadioBtn.Text);
+            }
+        }
+
+        private async void radioBtnNome_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioBtnNome.Checked)
+                await PesquisarPorNome(inpRadioBtn.Text);
+        }
+
+        private async void radioBtnPosicao_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioBtnPosicao.Checked)
+                await PesquisarPorPosicao(inpRadioBtn.Text);
+        }
     }
 }

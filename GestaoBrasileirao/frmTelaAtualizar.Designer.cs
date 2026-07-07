@@ -334,6 +334,7 @@
             radioBtnNome.TabStop = true;
             radioBtnNome.Text = "Nome do time";
             radioBtnNome.UseVisualStyleBackColor = true;
+            radioBtnNome.CheckedChanged += radioBtnNome_CheckedChanged;
             // 
             // panelTelaAtualizar
             // 
@@ -354,6 +355,7 @@
             inpRadioBtn.Name = "inpRadioBtn";
             inpRadioBtn.Size = new Size(243, 32);
             inpRadioBtn.TabIndex = 23;
+            inpRadioBtn.TextChanged += inpRadioBtn_TextChanged;
             // 
             // radioBtnPosicao
             // 
@@ -366,6 +368,7 @@
             radioBtnPosicao.TabStop = true;
             radioBtnPosicao.Text = "Posição";
             radioBtnPosicao.UseVisualStyleBackColor = true;
+            radioBtnPosicao.CheckedChanged += radioBtnPosicao_CheckedChanged;
             // 
             // TelaAtualizar
             // 

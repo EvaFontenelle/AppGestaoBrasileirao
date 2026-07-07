@@ -734,5 +734,234 @@ namespace GestaoBrasileirao
             }
         }
 
+        private async void btnApagar_Click(object sender, EventArgs e)
+        {
+            string serie = comboBoxAtualizar.Text;
+
+            switch (serie)
+            {
+                case "Série A":
+                    await deletarSerieA();
+                    break;
+
+                case "Série B":
+                    await deletarSerieB();
+                    break;
+
+                case "Série C":
+                    await deletarSerieC();
+                    break;
+
+                case "Série D":
+                    await deletarSerieD();
+                    break;
+
+                default:
+                    MessageBox.Show("Selecione alguma série para prosseguir!");
+                    break;
+            }
+        }
+
+        private async Task deletarSerieA()
+        {
+            if (_idSelecionado == null)
+            {
+                MessageBox.Show("Selecione um registro antes de excluir.",
+                                "Nenhum item selecionado",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult resp = MessageBox.Show(
+                "Deseja realmente excluir este registro?",
+                "Confirmar exclusão",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (resp != DialogResult.Yes)
+                return;
+
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    string apiDeleteUrl = $"{ApiRotasController.ConsultarSerieA}/{_idSelecionado}";
+
+                    HttpResponseMessage resposta =
+                        await client.DeleteAsync(apiDeleteUrl);
+
+                    if (resposta.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Registro excluído com sucesso!");
+
+                        _idSelecionado = null;
+                    }
+                    else
+                    {
+                        string detalhe = await resposta.Content.ReadAsStringAsync();
+
+                        MessageBox.Show($"Erro ao excluir.\n{resposta.StatusCode}\n{detalhe}");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private async Task deletarSerieB()
+        {
+            if (_idSelecionado == null)
+            {
+                MessageBox.Show("Selecione um registro antes de excluir.",
+                                "Nenhum item selecionado",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult resp = MessageBox.Show(
+                "Deseja realmente excluir este registro?",
+                "Confirmar exclusão",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (resp != DialogResult.Yes)
+                return;
+
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    string apiDeleteUrl = $"{ApiRotasController.ConsultarSerieB}/{_idSelecionado}";
+
+                    HttpResponseMessage resposta =
+                        await client.DeleteAsync(apiDeleteUrl);
+
+                    if (resposta.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Registro excluído com sucesso!");
+
+                        _idSelecionado = null;
+
+                        await SerieB();
+                    }
+                    else
+                    {
+                        string detalhe = await resposta.Content.ReadAsStringAsync();
+
+                        MessageBox.Show($"Erro ao excluir.\n{resposta.StatusCode}\n{detalhe}");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private async Task deletarSerieC()
+        {
+            if (_idSelecionado == null)
+            {
+                MessageBox.Show("Selecione um registro antes de excluir.",
+                                "Nenhum item selecionado",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult resp = MessageBox.Show(
+                "Deseja realmente excluir este registro?",
+                "Confirmar exclusão",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (resp != DialogResult.Yes)
+                return;
+
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    string apiDeleteUrl = $"{ApiRotasController.ConsultarSerieC}/{_idSelecionado}";
+
+                    HttpResponseMessage resposta =
+                        await client.DeleteAsync(apiDeleteUrl);
+
+                    if (resposta.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Registro excluído com sucesso!");
+
+                        _idSelecionado = null;
+
+                        await SerieC();
+                    }
+                    else
+                    {
+                        string detalhe = await resposta.Content.ReadAsStringAsync();
+
+                        MessageBox.Show($"Erro ao excluir.\n{resposta.StatusCode}\n{detalhe}");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private async Task deletarSerieD()
+        {
+            if (_idSelecionado == null)
+            {
+                MessageBox.Show("Selecione um registro antes de excluir.",
+                                "Nenhum item selecionado",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult resp = MessageBox.Show(
+                "Deseja realmente excluir este registro?",
+                "Confirmar exclusão",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (resp != DialogResult.Yes)
+                return;
+
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    string apiDeleteUrl = $"{ApiRotasController.ConsultarSerieD}/{_idSelecionado}";
+
+                    HttpResponseMessage resposta =
+                        await client.DeleteAsync(apiDeleteUrl);
+
+                    if (resposta.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Registro excluído com sucesso!");
+
+                        _idSelecionado = null;
+
+                        await SerieD();
+                    }
+                    else
+                    {
+                        string detalhe = await resposta.Content.ReadAsStringAsync();
+
+                        MessageBox.Show($"Erro ao excluir.\n{resposta.StatusCode}\n{detalhe}");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
     }
 }

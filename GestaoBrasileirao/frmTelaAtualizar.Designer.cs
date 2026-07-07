@@ -101,6 +101,7 @@
             btnApagar.TabIndex = 6;
             btnApagar.Text = "Apagar";
             btnApagar.UseVisualStyleBackColor = false;
+            btnApagar.Click += btnApagar_Click;
             // 
             // btnAtualizar
             // 

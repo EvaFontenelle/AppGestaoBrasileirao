@@ -334,7 +334,6 @@
             radioBtnNome.TabStop = true;
             radioBtnNome.Text = "Nome do time";
             radioBtnNome.UseVisualStyleBackColor = true;
-            radioBtnNome.CheckedChanged += radioBtnNome_CheckedChanged;
             // 
             // panelTelaAtualizar
             // 
@@ -368,7 +367,6 @@
             radioBtnPosicao.TabStop = true;
             radioBtnPosicao.Text = "Posição";
             radioBtnPosicao.UseVisualStyleBackColor = true;
-            radioBtnPosicao.CheckedChanged += radioBtnPosicao_CheckedChanged;
             // 
             // TelaAtualizar
             // 

@@ -13,6 +13,11 @@ namespace GestaoBrasileirao
 {
     public partial class frmTelaAtualizar : Form
     {
+        private List<ConsultarSerieAModel> listaSerieA = new();
+        private List<ConsultarSerieBModel> listaSerieB = new();
+        private List<ConsultarSerieCModel> listaSerieC = new();
+        private List<ConsultarSerieDModel> listaSerieD = new();
+
         public frmTelaAtualizar()
         {
             InitializeComponent();
@@ -62,7 +67,8 @@ namespace GestaoBrasileirao
                         var jsonString = await response.Content.ReadAsStringAsync();
                         var dados = JsonConvert.DeserializeObject<List<ConsultarSerieAModel>>(jsonString);
 
-                        TelaAtualizar.DataSource = dados;
+                        listaSerieA = dados;
+                        TelaAtualizar.DataSource = listaSerieA;
                     }
                     else
                     {
@@ -92,7 +98,8 @@ namespace GestaoBrasileirao
                         var jsonString = await response.Content.ReadAsStringAsync();
                         var dados = JsonConvert.DeserializeObject<List<ConsultarSerieBModel>>(jsonString);
 
-                        TelaAtualizar.DataSource = dados;
+                        listaSerieB = dados;
+                        TelaAtualizar.DataSource = listaSerieB;
                     }
                     else
                     {
@@ -122,7 +129,8 @@ namespace GestaoBrasileirao
                         var jsonString = await response.Content.ReadAsStringAsync();
                         var dados = JsonConvert.DeserializeObject<List<ConsultarSerieCModel>>(jsonString);
 
-                        TelaAtualizar.DataSource = dados;
+                        listaSerieC = dados;
+                        TelaAtualizar.DataSource = listaSerieC;
                     }
                     else
                     {
@@ -152,7 +160,8 @@ namespace GestaoBrasileirao
                         var jsonString = await response.Content.ReadAsStringAsync();
                         var dados = JsonConvert.DeserializeObject<List<ConsultarSerieDModel>>(jsonString);
 
-                        TelaAtualizar.DataSource = dados;
+                        listaSerieD = dados;
+                        TelaAtualizar.DataSource = listaSerieD;
                     }
                     else
                     {
@@ -964,28 +973,112 @@ namespace GestaoBrasileirao
             }
         }
 
-        private async void inpRadioBtn_TextChanged(object sender, EventArgs e)
+        private void inpRadioBtn_TextChanged(object sender, EventArgs e)
+        {
+            string serie = comboBoxAtualizar.Text;
+
+            switch (serie)
+            {
+                case "Série A":
+                    FiltraSerieA();
+                    break;
+
+                case "Série B":
+                    FiltraSerieB();
+                    break;
+
+                case "Série C":
+                    FiltraSerieC();
+                    break;
+
+                case "Série D":
+                    FiltraSerieD();
+                    break;
+
+                default:
+                    MessageBox.Show("Selecione alguma série para prosseguir!");
+                    break;
+            }
+        }
+
+        private void FiltraSerieA()
         {
             if (radioBtnNome.Checked)
             {
-                await PesquisarPorNome(inpRadioBtn.Text);
+                TelaAtualizar.DataSource = listaSerieA
+                    .Where(x => x.NomeClube.Contains(inpRadioBtn.Text,
+                        StringComparison.OrdinalIgnoreCase))
+                    .ToList();
             }
             else if (radioBtnPosicao.Checked)
             {
-                await PesquisarPorPosicao(inpRadioBtn.Text);
+                if (int.TryParse(inpRadioBtn.Text, out int posicao))
+                {
+                    TelaAtualizar.DataSource = listaSerieA
+                        .Where(x => x.PosicaoTabela == posicao)
+                        .ToList();
+                }
             }
         }
 
-        private async void radioBtnNome_CheckedChanged(object sender, EventArgs e)
+        private void FiltraSerieB()
         {
             if (radioBtnNome.Checked)
-                await PesquisarPorNome(inpRadioBtn.Text);
+            {
+                TelaAtualizar.DataSource = listaSerieB
+                    .Where(x => x.NomeClube.Contains(inpRadioBtn.Text,
+                        StringComparison.OrdinalIgnoreCase))
+                    .ToList();
+            }
+            else if (radioBtnPosicao.Checked)
+            {
+                if (int.TryParse(inpRadioBtn.Text, out int posicao))
+                {
+                    TelaAtualizar.DataSource = listaSerieB
+                        .Where(x => x.PosicaoTabela == posicao)
+                        .ToList();
+                }
+            }
         }
 
-        private async void radioBtnPosicao_CheckedChanged(object sender, EventArgs e)
+        private void FiltraSerieC()
         {
-            if (radioBtnPosicao.Checked)
-                await PesquisarPorPosicao(inpRadioBtn.Text);
+            if (radioBtnNome.Checked)
+            {
+                TelaAtualizar.DataSource = listaSerieC
+                    .Where(x => x.NomeClube.Contains(inpRadioBtn.Text,
+                        StringComparison.OrdinalIgnoreCase))
+                    .ToList();
+            }
+            else if (radioBtnPosicao.Checked)
+            {
+                if (int.TryParse(inpRadioBtn.Text, out int posicao))
+                {
+                    TelaAtualizar.DataSource = listaSerieC
+                        .Where(x => x.PosicaoTabela == posicao)
+                        .ToList();
+                }
+            }
+        }
+
+        private void FiltraSerieD()
+        {
+            if (radioBtnNome.Checked)
+            {
+                TelaAtualizar.DataSource = listaSerieD
+                    .Where(x => x.NomeClube.Contains(inpRadioBtn.Text,
+                        StringComparison.OrdinalIgnoreCase))
+                    .ToList();
+            }
+            else if (radioBtnPosicao.Checked)
+            {
+                if (int.TryParse(inpRadioBtn.Text, out int posicao))
+                {
+                    TelaAtualizar.DataSource = listaSerieD
+                        .Where(x => x.PosicaoTabela == posicao)
+                        .ToList();
+                }
+            }
         }
     }
 }
